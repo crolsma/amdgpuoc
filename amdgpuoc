@@ -18,6 +18,10 @@ BEGIN {
 }
 
 {
+  gsub(/[[:space:]]+/, " ")
+  gsub(/#.*|^ | $/, "")
+  $0 = tolower($0)
+  
   for (i in patt) {
     if ($0 ~ patt[i]) {
       print > file[i]
