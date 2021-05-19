@@ -22,6 +22,7 @@ BEGIN {
   gsub(/#.*|^ | $/, "")
   $0 = tolower($0)
   
+  # Parse and print input to sysfs files.
   for (i in patt) {
     if ($0 ~ patt[i]) {
       print > file[i]
@@ -29,6 +30,7 @@ BEGIN {
     }
   }
 
+  # Print current values to STDOUT.
   if ($0 ~ "p") {
     for (i in file) {
       print file[i]
