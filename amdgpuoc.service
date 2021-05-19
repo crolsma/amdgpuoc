@@ -1,0 +1,8 @@
+[Unit]
+Description = Overclock an AMD GPU
+
+[Service]
+ExecStart = /usr/sbin/amdgpuoc
+
+[Install]
+WantedBy = multi-user.target

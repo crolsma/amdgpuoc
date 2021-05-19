@@ -1,0 +1,33 @@
+Summary:
+  A simple CLI utility to overclock AMD GPUs.  Small, straightforward, and easy
+  to use and modify.
+
+  init starts script -> reads from input -> writes to sysfs files
+
+Warning:
+  Research your own GPU and adjust the .conf file as needed before running this
+  utility.  Instability and damage can occure due to overclocking.
+
+Usage:
+  amdgpuoc [file|-]
+
+  Calling amdgpuoc with no arguments uses the system-wide .conf file.
+  Specifying an argument as '-' uses STDIN for input.  Any other arguments are
+  treated as user-specified .conf files.
+
+Requirements:
+  An AMD GPU
+  Linux kernel >= 4.20
+  Kernel parameter amdgpu.ppfeaturemask=0xffffffff
+  POSIX awk
+  systemd
+
+Installation:
+  # add kernel parameter to grub config and reboot.
+  make install
+  systemctl enable amdgpuoc
+  systemctl start amdgpuoc
+
+Configuration:
+  Configuration is done by editing /etc/amdgpuoc.conf.  See the sample .conf
+  file for details.
