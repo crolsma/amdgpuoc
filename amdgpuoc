@@ -3,7 +3,7 @@
 # provided file, or from STDIN.
 
 BEGIN {
-  conf = "/etc/amdgpuoc.conf"
+  conf = "/usr/local/etc/amdgpuoc.conf"
   sys = "/sys/class/drm/card0/device"
   file["clk"] = sys "/pp_od_clk_voltage"
   file["tdp"] = sys "/hwmon/hwmon0/power1_cap"
