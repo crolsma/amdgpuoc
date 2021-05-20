@@ -4,8 +4,8 @@
 sbin = amdgpuoc
 conf = amdgpuoc.conf
 init = amdgpuoc.service
-sbin_target = /usr/sbin/$(sbin)
-conf_target = /etc/$(conf)
+sbin_target = /usr/local/sbin/$(sbin)
+conf_target = /usr/local/etc/$(conf)
 init_target = /etc/systemd/system/$(init)
 
 install: $(sbin_target) $(conf_target) $(init_target)
