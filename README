@@ -1,15 +1,22 @@
 Summary:
-  A simple CLI utility to overclock AMD GPUs.  Small, straightforward, and easy
-  to use and modify.
+  A simple CLI utility to overclock AMD GPUs.  Small, simple, and easy to use
+  and modify.
 
   init starts script -> reads from input -> writes to sysfs files
+  
+  For more information about overclocking and the amdgpu driver:
+  https://www.kernel.org/doc/html/latest/gpu/amdgpu.html
+  
+  For more information about the amdgpu.ppfeaturemask parameter:
+  drivers/gpu/drm/amd/include/amd_shared.h from the kernel source tree.
 
 Warning:
   Research your own GPU and adjust the .conf file as needed before running this
-  utility.  Instability and damage can occure due to overclocking.
+  utility.  Instability and damage can occure due to overclocking.  Not all AMD
+  GPUs can be overclocked in this manner.
 
 Usage:
-  amdgpuoc [file|-]
+  amdgpuoc [files|-]
 
   Calling amdgpuoc with no arguments uses the system-wide .conf file.
   Specifying an argument as '-' uses STDIN for input.  Any other arguments are
