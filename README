@@ -1,6 +1,7 @@
 Summary:
   A simple CLI utility to overclock AMD GPUs.  Small, simple, and easy to use
-  and modify.
+  and modify.  Interacting with the sysfs by hand is tedious.  This utility
+  makes that easier without becoming too complicated in itself.
 
   init starts script -> reads from input -> writes to sysfs files
   
