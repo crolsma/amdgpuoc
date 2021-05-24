@@ -30,11 +30,14 @@ Requirements:
   systemd
 
 Installation:
-  # add kernel parameter to grub config and reboot.
+  vi /etc/default/grub
+  # Append amdgpu.ppfeaturemask=0xffffffff to GRUB_CMDLINE_LINUX_DEFAULT value.
+  # Save and exit vi.
+  grub2-mkconfig -o /boot/grub2/grub.cfg
   make install
   systemctl enable amdgpuoc
   systemctl start amdgpuoc
 
 Configuration:
-  Configuration is done by editing /etc/amdgpuoc.conf.  See the sample .conf
-  file for details.
+  Configuration is done by editing /usr/local/etc/amdgpuoc.conf.  See the sample
+  .conf file for details.
