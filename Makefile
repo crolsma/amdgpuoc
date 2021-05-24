@@ -13,10 +13,10 @@ $(sbin)/$(name): $(name)
 	cp -- $< $@
 	chmod -- u+x $@
 
-$(conf)/%.conf: %.conf
+$(conf)/$(name).conf: $(name).conf
 	mkdir -p -- $(conf)
 	cp -- $< $@
 
-$(init)/%.service: %.service
+$(init)/$(name).service: $(name).service
 	mkdir -p -- $(conf)
 	cp -- $< $@
