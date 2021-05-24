@@ -35,6 +35,7 @@ Installation:
   # Append amdgpu.ppfeaturemask=0xffffffff to GRUB_CMDLINE_LINUX_DEFAULT value.
   # Save and exit vi.
   grub2-mkconfig -o /boot/grub2/grub.cfg
+  # Reboot.
   make install
   systemctl enable amdgpuoc
   systemctl start amdgpuoc
