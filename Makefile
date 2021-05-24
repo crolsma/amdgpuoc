@@ -1,21 +1,22 @@
 # amdgpuoc Makefile.
 
 .POSIX:
-sbin = amdgpuoc
-conf = amdgpuoc.conf
-init = amdgpuoc.service
-sbin_target = /usr/local/sbin/$(sbin)
-conf_target = /usr/local/etc/$(conf)
-init_target = /etc/systemd/system/$(init)
+name = amdgpuoc
+sbin = /usr/local/sbin/
+conf = /usr/local/etc/
+init = /etc/systemd/system/
 
-install: $(sbin_target) $(conf_target) $(init_target)
+install: $(sbin)/$(name) $(conf)/$(name).conf $(init)/$(name).service
 
-$(sbin_target): $(sbin)
+$(sbin)/$(name): $(name)
+	mkdir -p -- $(sbin)
 	cp $< $@
 	chmod u+x $@
 
-$(conf_target): $(conf)
+$(conf)/%.conf: %.conf
+	mkdir -p -- $(conf)
 	cp $< $@
 
-$(init_target): $(init)
+$(init)/%.service: %.service
+	mkdir -p -- $(conf)
 	cp $< $@
