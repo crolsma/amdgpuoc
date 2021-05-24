@@ -10,13 +10,13 @@ install: $(sbin)/$(name) $(conf)/$(name).conf $(init)/$(name).service
 
 $(sbin)/$(name): $(name)
 	mkdir -p -- $(sbin)
-	cp $< $@
-	chmod u+x $@
+	cp -- $< $@
+	chmod -- u+x $@
 
 $(conf)/%.conf: %.conf
 	mkdir -p -- $(conf)
-	cp $< $@
+	cp -- $< $@
 
 $(init)/%.service: %.service
 	mkdir -p -- $(conf)
-	cp $< $@
+	cp -- $< $@
