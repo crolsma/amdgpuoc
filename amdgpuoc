@@ -19,7 +19,7 @@ BEGIN {
 
 {
   gsub(/[[:space:]]+/, " ")
-  gsub(/#.*|^ | $/, "")
+  gsub(/ *#.*|^ | $/, "")
   $0 = tolower($0)
   
   # Parse and print input to sysfs files.
