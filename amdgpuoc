@@ -22,24 +22,24 @@ BEGIN {
   gsub(/[[:space:]]+/, " ")
   gsub(/ *#.*|^ | $/, "")
   $0 = tolower($0)
-  
+}
+
+{
   for (i in patt) {
     if ($0 ~ patt[i]) {
       print > file[i]
       close(file[i])
     }
   }
+}
 
-  if ($0 ~ "p") {
-    for (i in file) {
-      print file[i]
-
-      while (getline < file[i] > 0) {
-        print
-      }
-
-      close(file[i])
+/^p$/ {
+  for (i in file) {
+    print file[i]
+    while (getline < file[i] > 0) {
+      print
     }
+    close(file[i])
   }
 }
 
