@@ -1,6 +1,8 @@
 #!/bin/awk -f
-# Overclock an AMD GPU in Linux from either a system-wide .conf file, a user-
-# provided file, or from STDIN.
+# Overclock an AMD GPU in Linux from either
+# a system-wide *.conf file,
+# a user-specified file,
+# or STDIN.
 
 BEGIN {
   conf = "/usr/local/etc/amdgpuoc.conf"
@@ -10,7 +12,6 @@ BEGIN {
   patt["clk"] = "^r$|^[ms] [0-9]+ [0-9]+ [0-9]+$" # {n,m} not always supported.
   patt["tdp"] = "^[0-9]+$"
 
-  # If no arguments given, use system-wide .conf file.
   if (ARGC == 1) {
     ARGC++
     ARGV[1] = conf
@@ -22,7 +23,6 @@ BEGIN {
   gsub(/ *#.*|^ | $/, "")
   $0 = tolower($0)
   
-  # Parse and print input to sysfs files.
   for (i in patt) {
     if ($0 ~ patt[i]) {
       print > file[i]
@@ -30,7 +30,6 @@ BEGIN {
     }
   }
 
-  # Print current values to STDOUT.
   if ($0 ~ "p") {
     for (i in file) {
       print file[i]
@@ -45,6 +44,5 @@ BEGIN {
 }
 
 END {
-  # Finalize changes.
   print "c" > file["clk"]
 }
