@@ -19,3 +19,8 @@ $(prefix)/etc/amdgpuoc.conf: amdgpuoc.conf
 $(prefix)/lib/systemd/system/amdgpuoc.service: amdgpuoc.service
 	mkdir -p -- $(@D)
 	cp -- $? $@
+
+uninstall:
+	rm -f -- $(prefix)/sbin/amdgpuoc \
+	         $(prefix)/etc/amdgpuoc.conf \
+		 $(prefix)/lib/systemd/system/amdgpuoc.service
