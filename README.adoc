@@ -6,7 +6,7 @@ For more information about overclocking and the amdgpu driver:
 https://www.kernel.org/doc/html/latest/gpu/amdgpu.html[]
 
 For more information about the amdgpu.ppfeaturemask parameter:
-drivers/gpu/drm/amd/include/amd_shared.h from the kernel source tree.
+`drivers/gpu/drm/amd/include/amd_shared.h` from the kernel source tree.
 
 == Warning
 
