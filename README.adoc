@@ -6,19 +6,21 @@ For more information about overclocking and the amdgpu driver:
 https://www.kernel.org/doc/html/latest/gpu/amdgpu.html[]
 
 For more information about the amdgpu.ppfeaturemask parameter:
-`drivers/gpu/drm/amd/include/amd_shared.h` from the kernel source tree.
+`drivers/gpu/drm/amd/include/amd_shared.h`
+from the kernel source tree.
 
 == Warning
 
 Research your own GPU and adjust the *.conf file as needed before running this utility.
-Damage and instability can occure due to overclocking.
+Overclocking can cause instability and damage to hardware.
 Not all AMD GPUs can be overclocked in this manner.
 
 == Usage
 
 `amdgpuoc [file...]`
 
-If no arguments are given, amdgpuoc uses the system-wide *.conf file.
+If no arguments are given,
+amdgpuoc uses the system-wide *.conf file.
 Otherwise, any arguments are treated as user-specified *.conf files.
 Specifying an argument as `-` uses STDIN for input.
 
@@ -28,11 +30,11 @@ Specifying an argument as `-` uses STDIN for input.
 * Linux kernel >= 4.20
 * Kernel parameter `amdgpu.ppfeaturemask=0xffffffff`
 * POSIX `awk`
-* `systemd`
 
 == Installation
 
-. In `/etc/default/grub`, append `amdgpu.ppfeaturemask=0xffffffff` to the `GRUB_CMDLINE_LINUX_DEFAULT` value.
+. In `/etc/default/grub`,
+  append `amdgpu.ppfeaturemask=0xffffffff` to the `GRUB_CMDLINE_LINUX_DEFAULT` value.
 . `grub2-mkconfig -o /boot/grub2/grub.cfg`
 . `make install`
 . `systemctl enable amdgpuoc`
@@ -40,5 +42,6 @@ Specifying an argument as `-` uses STDIN for input.
 
 == Configuration
 
-To configure values, edit `/usr/local/etc/amdgpuoc.conf`.
+To configure values,
+edit `/usr/local/etc/amdgpuoc.conf`.
 See the included *.conf file for details.
