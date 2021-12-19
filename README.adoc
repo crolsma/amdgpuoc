@@ -45,3 +45,9 @@ Specifying an argument as `-` uses STDIN for input.
 To configure values,
 edit `/usr/local/etc/amdgpuoc.conf`.
 See the included *.conf file for details.
+
+== TODO
+
+The exact path to the power cap file can vary across distributions.
+Must add a mechanism for determining the correct path
+either when executed or installed.
