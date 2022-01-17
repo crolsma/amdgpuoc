@@ -10,27 +10,27 @@ install: $(prefix)/lib/systemd/system/amdgpuoc.service
 
 $(prefix)/sbin/amdgpuoc: $(prefix)/sbin
 $(prefix)/sbin/amdgpuoc: amdgpuoc
-    cp -- amdgpuoc $@
-    chmod -- u+x $@
+	cp -- amdgpuoc $@
+	chmod -- u+x $@
 
 $(prefix)/etc/amdgpuoc.conf: $(prefix)/etc
 $(prefix)/etc/amdgpuoc.conf: amdgpuoc.conf
-    cp -- amdgpuoc.conf $@
+	cp -- amdgpuoc.conf $@
 
 $(prefix)/lib/systemd/system/amdgpuoc.service: $(prefix)/lib/systemd/system
 $(prefix)/lib/systemd/system/amdgpuoc.service: amdgpuoc.service
-    cp -- amdgpuoc.service $@
+	cp -- amdgpuoc.service $@
 
 $(prefix)/sbin:
-    mkdir -p -- $@
+	mkdir -p -- $@
 
 $(prefix)/etc:
-    mkdir -p -- $@
+	mkdir -p -- $@
 
 $(prefix)/lib/systemd/system:
-    mkdir -p -- $@
+	mkdir -p -- $@
 
 uninstall:
-    rm -f -- $(prefix)/sbin/amdgpuoc     \
-             $(prefix)/etc/amdgpuoc.conf \
-             $(prefix)/lib/systemd/system/amdgpuoc.service
+	rm -f -- $(prefix)/sbin/amdgpuoc     \
+	         $(prefix)/etc/amdgpuoc.conf \
+	         $(prefix)/lib/systemd/system/amdgpuoc.service
