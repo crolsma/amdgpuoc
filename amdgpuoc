@@ -55,6 +55,7 @@ BEGIN {
 
 END {
   print "c" > file["clk"]
+  close(file["clk"])
 }
 
 function find_power(path, _cmd, _str) {
