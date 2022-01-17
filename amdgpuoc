@@ -4,11 +4,16 @@
 # a user-specified file,
 # or STDIN.
 
+# TODO:
+# * Error handling for invalid card and power pathnames.
+# * Reset TDP functionality.
+# * Output current values in suitable format for input.
+
 BEGIN {
   conf = "/usr/local/etc/amdgpuoc.conf"
-  sys = "/sys/class/drm/card0/device"
-  file["clk"] = sys "/pp_od_clk_voltage"
-  file["tdp"] = sys "/hwmon/hwmon0/power1_cap"
+  card = "/sys/class/drm/card0/device"
+  file["clk"] = card "/pp_od_clk_voltage"
+  file["tdp"] = find_power(card)
   patt["clk"] = "^r$|^[ms] [0-9]+ [0-9]+ [0-9]+$" # {n,m} not always supported.
   patt["tdp"] = "^[0-9]+$"
 
@@ -21,7 +26,6 @@ BEGIN {
 {
   gsub(/[[:space:]]+/, " ")
   gsub(/ *#.*|^ | $/, "")
-  $0 = tolower($0)
 }
 
 {
@@ -33,11 +37,17 @@ BEGIN {
   }
 }
 
+/^[/]/ {
+  card = $0
+  file["clk"] = card "/pp_od_clk_voltage"
+  file["tdp"] = find_power(card)
+}
+
 /^p$/ {
   for (i in file) {
     print file[i]
-    while (getline < file[i] > 0) {
-      print
+    while ((getline line < file[i]) == 1) {
+      print line
     }
     close(file[i])
   }
@@ -45,4 +55,12 @@ BEGIN {
 
 END {
   print "c" > file["clk"]
+}
+
+function find_power(path, _cmd, _str) {
+  gsub(/"/, "\\&", path)
+  _cmd = "find -H \"" path "\" -name power1_cap"
+  _cmd | getline _str
+  close(_cmd)
+  return _str
 }
