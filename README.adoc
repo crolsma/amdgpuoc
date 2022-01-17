@@ -2,18 +2,20 @@
 
 A  lightweight CLI utility to overclock AMD GPUs.
 
-For more information about overclocking and the amdgpu driver:
+For more information about the amdgpu driver and overclocking:
 https://www.kernel.org/doc/html/latest/gpu/amdgpu.html[]
 
 For more information about the amdgpu.ppfeaturemask parameter:
 `drivers/gpu/drm/amd/include/amd_shared.h`
 from the kernel source tree.
 
+Not all AMD GPUs can be overclocked in this manner.
+
 == Warning
 
-Research your own GPU and adjust the *.conf file as needed before running this utility.
+Research your own GPU
+and adjust the *.conf file as needed before running this utility.
 Overclocking can cause instability and damage to hardware.
-Not all AMD GPUs can be overclocked in this manner.
 
 == Usage
 
@@ -21,7 +23,7 @@ Not all AMD GPUs can be overclocked in this manner.
 
 If no arguments are given,
 amdgpuoc uses the system-wide *.conf file.
-Otherwise, any arguments are treated as user-specified *.conf files.
+Otherwise any arguments are treated as user-specified *.conf files.
 Specifying an argument as `-` uses STDIN for input.
 
 == Requirements
@@ -34,7 +36,8 @@ Specifying an argument as `-` uses STDIN for input.
 == Installation
 
 . In `/etc/default/grub`,
-  append `amdgpu.ppfeaturemask=0xffffffff` to the `GRUB_CMDLINE_LINUX_DEFAULT` value.
+  add `amdgpu.ppfeaturemask=0xffffffff`
+  to `GRUB_CMDLINE_LINUX_DEFAULT`.
 . `grub2-mkconfig -o /boot/grub2/grub.cfg`
 . `make install`
 . `systemctl enable amdgpuoc`
@@ -45,9 +48,3 @@ Specifying an argument as `-` uses STDIN for input.
 To configure values,
 edit `/usr/local/etc/amdgpuoc.conf`.
 See the included *.conf file for details.
-
-== TODO
-
-The exact path to the power cap file can vary across distributions.
-Must add a mechanism for determining the correct path
-either when executed or installed.
