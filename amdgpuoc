@@ -59,7 +59,7 @@ END {
 }
 
 function find_power(path, _cmd, _str) {
-  gsub(/"/, "\\&", path)
+  gsub(/"/, "\\\\&", path)
   _cmd = "find -H \"" path "\" -name power1_cap"
   _cmd | getline _str
   close(_cmd)
