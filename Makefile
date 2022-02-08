@@ -6,7 +6,7 @@ prefix = /usr/local
 
 install: $(prefix)/sbin/amdgpuoc
 install: $(prefix)/etc/amdgpuoc.conf
-install: $(prefix)/lib/systemd/system/amdgpuoc.service
+install: /etc/systemd/system/amdgpuoc.service
 
 $(prefix)/sbin/amdgpuoc: $(prefix)/sbin
 $(prefix)/sbin/amdgpuoc: amdgpuoc
@@ -17,8 +17,8 @@ $(prefix)/etc/amdgpuoc.conf: $(prefix)/etc
 $(prefix)/etc/amdgpuoc.conf: amdgpuoc.conf
 	cp -- amdgpuoc.conf $@
 
-$(prefix)/lib/systemd/system/amdgpuoc.service: $(prefix)/lib/systemd/system
-$(prefix)/lib/systemd/system/amdgpuoc.service: amdgpuoc.service
+/etc/systemd/system/amdgpuoc.service: /etc/systemd/system
+/etc/systemd/system/amdgpuoc.service: amdgpuoc.service
 	cp -- amdgpuoc.service $@
 
 $(prefix)/sbin:
@@ -27,10 +27,10 @@ $(prefix)/sbin:
 $(prefix)/etc:
 	mkdir -p -- $@
 
-$(prefix)/lib/systemd/system:
+/etc/systemd/system:
 	mkdir -p -- $@
 
 uninstall:
 	rm -f -- $(prefix)/sbin/amdgpuoc     \
 	         $(prefix)/etc/amdgpuoc.conf \
-	         $(prefix)/lib/systemd/system/amdgpuoc.service
+	         /etc/systemd/system/amdgpuoc.service
