@@ -3,7 +3,7 @@
 A  lightweight CLI utility to overclock AMD GPUs.
 
 For more information about the amdgpu driver and overclocking:
-https://www.kernel.org/doc/html/latest/gpu/amdgpu.html[]
+https://www.kernel.org/doc/html/latest/gpu/amdgpu.html
 
 For more information about the amdgpu.ppfeaturemask parameter:
 `drivers/gpu/drm/amd/include/amd_shared.h`
@@ -39,7 +39,7 @@ Specifying an argument as `-` uses STDIN for input.
   add `amdgpu.ppfeaturemask=0xffffffff`
   to `GRUB_CMDLINE_LINUX_DEFAULT`.
 . `grub2-mkconfig -o /boot/grub2/grub.cfg`
-. `make install`
+. `make install [prefix=path]`
 . `systemctl enable amdgpuoc`
 . Reboot.
 
