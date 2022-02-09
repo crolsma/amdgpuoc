@@ -10,7 +10,7 @@
 # * Output current values in suitable format for input.
 
 BEGIN {
-  conf = "/usr/local/etc/amdgpuoc.conf"
+  conf = "$prefix/etc/amdgpuoc.conf"
   card = "/sys/class/drm/card0/device"
   file["clk"] = card "/pp_od_clk_voltage"
   file["tdp"] = find_power(card)

@@ -2,7 +2,7 @@
 Description = Overclock an AMD GPU
 
 [Service]
-ExecStart = /usr/local/sbin/amdgpuoc
+ExecStart = $prefix/sbin/amdgpuoc
 Type = oneshot
 
 [Install]

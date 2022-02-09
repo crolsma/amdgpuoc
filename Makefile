@@ -1,5 +1,4 @@
 # amdgpuoc Makefile.
-
 .POSIX:
 
 prefix = /usr/local
@@ -10,7 +9,7 @@ install: /etc/systemd/system/amdgpuoc.service
 
 $(prefix)/sbin/amdgpuoc: $(prefix)/sbin
 $(prefix)/sbin/amdgpuoc: amdgpuoc
-	cp -- amdgpuoc $@
+	sed 's,$$prefix,$(prefix),g' amdgpuoc > $@
 	chmod -- u+x $@
 
 $(prefix)/etc/amdgpuoc.conf: $(prefix)/etc
@@ -19,7 +18,7 @@ $(prefix)/etc/amdgpuoc.conf: amdgpuoc.conf
 
 /etc/systemd/system/amdgpuoc.service: /etc/systemd/system
 /etc/systemd/system/amdgpuoc.service: amdgpuoc.service
-	cp -- amdgpuoc.service $@
+	sed 's,$$prefix,$(prefix),g' amdgpuoc.service > $@
 
 $(prefix)/sbin:
 	mkdir -p -- $@
