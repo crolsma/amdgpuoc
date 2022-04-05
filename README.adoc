@@ -46,5 +46,5 @@ Specifying an argument as `-` uses STDIN for input.
 == Configuration
 
 To configure values,
-edit `/usr/local/etc/amdgpuoc.conf`.
+edit `${prefix-/usr/local}/etc/amdgpuoc.conf`.
 See the included *.conf file for details.
