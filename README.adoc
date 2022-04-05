@@ -39,7 +39,7 @@ Specifying an argument as `-` uses STDIN for input.
   add `amdgpu.ppfeaturemask=0xffffffff`
   to `GRUB_CMDLINE_LINUX_DEFAULT`.
 . `grub2-mkconfig -o /boot/grub2/grub.cfg`
-. `make install [prefix=path]`
+. `make [prefix=path]`
 . `systemctl enable amdgpuoc`
 . Reboot.
 
